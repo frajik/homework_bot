@@ -44,7 +44,7 @@ def send_message(bot, message):
         logger.error(f"Сообщение не отправлено:{error}")
 
 
-def get_api_answer(current_timestamp=0):
+def get_api_answer(current_timestamp):
     """Запрос к единственному эндпоинту API-сервиса."""
     timestamp = current_timestamp
     params = {'from_date': timestamp}
@@ -60,7 +60,7 @@ def get_api_answer(current_timestamp=0):
 def check_response(response):
     """Проверяет ответ API на корректность."""
     try:
-        hw = response["homeworks"]
+        hw = response["homeworks"][0]
     except KeyError as error:
         message = f"Нет ответа API по ключу 'homeworks'. Ошибка {error}"
         logger.error(message)
@@ -102,27 +102,25 @@ def main():
     except GetTokenFailed:
         logger.critical("Отсутствие обязательных переменных окружения")
         exit()
+    bot = telegram.Bot(token=TELEGRAM_TOKEN)
     current_timestamp = int(time.time() - RETRY_TIME)
-
     while True:
         try:
-            response = get_api_answer(current_timestamp)
+            response = get_api_answer(current_timestamp - RETRY_TIME)
             homework = check_response(response)
             if homework:
-                send_message(
+                bot.send_message(
                     TELEGRAM_CHAT_ID,
                     parse_status(homework)
                 )
-            time.sleep(RETRY_TIME)
 
         except Exception as error:
             message = f'Сбой в работе программы: {error}'
             logger.critical(message)
-            send_message(
+            bot.send_message(
                 TELEGRAM_CHAT_ID,
                 message
             )
-            time.sleep(RETRY_TIME)
         finally:
             time.sleep(RETRY_TIME)
 
