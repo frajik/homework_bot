@@ -60,7 +60,7 @@ def get_api_answer(current_timestamp):
 def check_response(response):
     """Проверяет ответ API на корректность."""
     try:
-        hw = response["homeworks"][0]
+        hw = response["homeworks"]
     except KeyError as error:
         message = f"Нет ответа API по ключу 'homeworks'. Ошибка {error}"
         logger.error(message)
