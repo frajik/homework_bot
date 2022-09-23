@@ -14,3 +14,9 @@ class GetTokenFailed(Exception):
     """Ошибка, если нет доступа к переменным окружения."""
 
     pass
+
+
+class SendMessageError(Exception):
+    """Ошибка при отправке сообщения."""
+
+    pass
