@@ -38,8 +38,8 @@
     - export TELEGRAM_TOKEN=<TELEGRAM_TOKEN>
     - export CHAT_ID=<CHAT_ID>
 ```
-###Примечание:
-  [Эндпоинт](https://practicum.yandex.ru/api/user_api/homework_statuses/) API Яндекс.Практикума, доступ к нему возможен только по токену, который можно получить [ТУТ](https://oauth.yandex.ru/authorize?response_type=token&client_id=1d0b9dd4d652455a9eb710d450ff456a)
+Примечание. [Эндпоинт](https://practicum.yandex.ru/api/user_api/homework_statuses/) API Яндекс.Практикума, доступ к нему возможен только по токену, который можно получить [ТУТ](https://oauth.yandex.ru/authorize?response_type=token&client_id=1d0b9dd4d652455a9eb710d450ff456a)
+
 6. Запускаем бота:
 ```
     - python homework.py
@@ -52,6 +52,5 @@
 - Бот каждые 10 минут проверяет статус домашней работы;
 - Если статус работы поменялся - бот присылает соответствующее сообщение.
 
-
-
-## Регистрация новых пользователей
+###Автор: 
+**Матвейчук Дмитрий**
