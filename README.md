@@ -5,8 +5,8 @@
 
 ## Используемые технологии:
 - [Python 3.7](https://www.python.org/)
-- [DRF](https://www.django-rest-framework.org/)
-- [JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+- [Python-telegram-bot](https://docs.python-telegram-bot.org/en/stable/)
+
 
 
 ## Как запустить проект:
